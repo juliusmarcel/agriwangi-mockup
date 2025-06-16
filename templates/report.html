@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Inventory Report</h2>
+<hr>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Full Inventory Data</h5>
+        <a href="#" class="btn btn-success">Download Excel</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Incoming Date</th>
+                        <th>Expiry Date</th>
+                        <th>PO Number</th>
+                        <th>Material Code</th>
+                        <th>Description</th>
+                        <th>Weight</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.incoming_date }}</td>
+                        <td>{{ item.expiry_date }}</td>
+                        <td>{{ item.po_number }}</td>
+                        <td>{{ item.material_code }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.weight }} kg</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.status|upper }}</td>
+                        <td>{{ item.location }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Generate Barcode/Label</h2>
+<hr>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">Barcode Information</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Material Code</label>
+                    <input type="text" class="form-control" value="{{ item.material_code }}" readonly>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-control" value="{{ item.description }}" readonly>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">PO Number</label>
+                    <input type="text" class="form-control" value="{{ item.po_number }}" readonly>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Quantity</label>
+                    <input type="text" class="form-control" value="{{ item.quantity }}" readonly>
+                </div>
+            </div>
+            
+            <div class="col-md-6 text-center">
+                <div class="border p-4 mb-3" style="height: 200px;">
+                    <h4>Barcode Preview</h4>
+                    <div class="mt-3">
+                        <img src="https://barcode.tec-it.com/barcode.ashx?data={{ item.material_code }}&code=Code128&dpi=96" alt="Barcode">
+                    </div>
+                    <p class="mt-2">{{ item.material_code }}</p>
+                </div>
+                
+                <div class="border p-3">
+                    <h5>FIFO Information</h5>
+                    <p>Incoming Date: {{ item.incoming_date }}</p>
+                    <p>Expiry Date: {{ item.expiry_date }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+            <a href="{{ url_for('inventory') }}" class="btn btn-secondary me-md-2">Back</a>
+            <button onclick="window.print()" class="btn btn-primary">Print Barcode</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

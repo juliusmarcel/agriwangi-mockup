@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Barang Keluar (Outbound)</h2>
+<hr>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">Process Outbound</h5>
+    </div>
+    <div class="card-body">
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+        
+        <form method="POST">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Material Code</label>
+                    <input type="text" class="form-control" value="{{ item.material_code }}" readonly>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Current Quantity</label>
+                    <input type="text" class="form-control" value="{{ item.quantity }}" readonly>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Incoming Date (FIFO)</label>
+                <input type="text" class="form-control" value="{{ item.incoming_date }}" readonly>
+            </div>
+            
+            <div class="mb-3">
+                <label for="out_quantity" class="form-label">Quantity to Out</label>
+                <input type="number" class="form-control" id="out_quantity" name="out_quantity" 
+                       min="1" max="{{ item.quantity }}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="destination" class="form-label">Destination</label>
+                <select class="form-select" id="destination" name="destination" required>
+                    <option value="">Select destination</option>
+                    <option value="production">Production</option>
+                    <option value="logistic">Logistic</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="mb-3">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea class="form-control" id="notes" name="notes" rows="2"></textarea>
+            </div>
+            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="{{ url_for('inventory') }}" class="btn btn-secondary me-md-2">Cancel</a>
+                <button type="submit" class="btn btn-danger">Confirm Out</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

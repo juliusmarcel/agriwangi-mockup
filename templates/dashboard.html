@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Dashboard</h2>
+<hr>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header">Total Items</div>
+            <div class="card-body">
+                <h5 class="card-title">1,248</h5>
+                <p class="card-text">Items in warehouse</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-header">Incoming Today</div>
+            <div class="card-body">
+                <h5 class="card-title">24</h5>
+                <p class="card-text">New items arrived</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-header">Near Expiry</div>
+            <div class="card-body">
+                <h5 class="card-title">15</h5>
+                <p class="card-text">Items expiring soon</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-header">
+        Recent Activities
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Activity</th>
+                    <th>User</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2023-06-15 09:30</td>
+                    <td>Added new item MAT-001</td>
+                    <td>warehouse</td>
+                </tr>
+                <tr>
+                    <td>2023-06-15 10:15</td>
+                    <td>Updated quantity for MAT-002</td>
+                    <td>ppic</td>
+                </tr>
+                <tr>
+                    <td>2023-06-14 14:45</td>
+                    <td>Generated barcode for PO-001</td>
+                    <td>warehouse</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
